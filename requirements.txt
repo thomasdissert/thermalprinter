@@ -1,0 +1,4 @@
+escpos==1.9
+Flask==2.1.2
+Pillow==9.1.1
+python_escpos==2.2.0
