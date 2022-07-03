@@ -2,8 +2,8 @@ from flask import Flask, request
 from PIL import Image
 from escpos import printer
 
-p = printer.Dummy()
-#p = printer.Usb(0x0416, 0x5011, 0, 0x81, 0x03)
+# p = printer.Dummy()
+p = printer.Usb(0x0416, 0x5011, 0, 0x81, 0x03)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
@@ -35,7 +35,7 @@ def image_upload():
             #img.save('output.png')
             print("\nImage size: ", img.size)
             #img.show()
-            #p.image(img)
+            p.image(img)
             #print(p.output)
             print("image printed to dummy printer\n")
             return "image uploaded"
@@ -59,7 +59,7 @@ def image_upload():
 
 def main():
     p.text("Start Machine\n")
-    print(p.output)
+    # print(p.output)
 
     app.run(host='localhost', port=8080)
 
